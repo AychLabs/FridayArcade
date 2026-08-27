@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b18">
+  <meta name="description" content="Friday Arcade — educational games for computer science students.">
+  <title>Friday Arcade</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/profile.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to game library</a>
+  <div class="ambient-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Friday Arcade home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>
+        <span class="brand-name">Friday <strong>Arcade</strong></span>
+        <span class="brand-tagline">School's still in session. It just doesn't feel like it.</span>
+      </span>
+    </a>
+    <div class="player-chip" aria-label="Current player">
+      <span class="online-dot" aria-hidden="true"></span>
+      <span><small>Player</small><strong data-profile="displayName">Guest</strong></span>
+      <span class="chip-level">LVL <b data-profile="level">1</b></span>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Arcade systems online</p>
+        <h1 id="hero-title">Your next challenge <em>starts here.</em></h1>
+        <p>Play. Build skills. Earn XP. Unlock rewards. Welcome to the computer science arcade.</p>
+        <a class="primary-button" href="#games-title">
+          View Game Library <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <aside class="progress-panel" aria-labelledby="progress-title">
+        <div class="panel-heading">
+          <div><p class="kicker">Player status</p><h2 id="progress-title" data-profile-label>Guest</h2></div>
+          <span class="status-pill">Local Profile</span>
+        </div>
+        <div class="level-row">
+          <div class="level-orb"><small>Level</small><strong data-profile="level">1</strong></div>
+          <div class="xp-block">
+            <div class="xp-label"><span><b data-profile="xp">0</b> XP</span><span data-xp-next>100 XP next</span></div>
+            <div class="xp-track" role="progressbar" aria-label="Experience toward next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span data-xp-bar></span>
+            </div>
+          </div>
+        </div>
+        <div class="stat-grid">
+          <div class="token-stat"><span class="token-icon" aria-hidden="true">A</span><span><small>Arcade Tokens</small><strong data-profile="arcadeTokens">0</strong></span></div>
+          <div><small>Friday Wins</small><strong data-profile="fridayWins">0</strong></div>
+          <div><small>Badges</small><strong data-profile="badgeCount">0</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="games-section" aria-labelledby="games-title">
+      <div class="section-heading">
+        <div><p class="kicker">Select game</p><h2 id="games-title">Arcade Library</h2></div>
+        <p>New challenges will be added throughout the year.</p>
+      </div>
+
+      <article class="featured-game">
+        <div class="feature-art" aria-hidden="true">
+          <div class="screen"><span>DIAGNOSTIC</span><b>SYSTEM READY</b><i></i><i></i><i></i></div>
+          <div class="bench-line"></div>
+          <div class="tool tool-one">+</div><div class="tool tool-two">◆</div>
+        </div>
+        <div class="feature-content">
+          <div class="game-meta"><span class="available"><i></i> Available</span><span>Strategy · Simulation</span></div>
+          <p class="game-number">Game 01</p>
+          <h3>Repair Shop <em>Rush</em></h3>
+          <p>Run your own computer repair shop. Diagnose problems, repair systems, earn money, and build your reputation.</p>
+          <div class="feature-footer">
+            <a class="primary-button" href="games/repair-shop-rush/index.html">Play now <span aria-hidden="true">→</span></a>
+            <span class="game-skill">Diagnose · Repair · Upgrade</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="game-grid">
+        <article class="game-card cyan"><span class="card-icon" aria-hidden="true">⌕</span><span class="soon">Coming soon</span><h3>Tech Detective</h3><p>Solve mysterious computer problems by gathering evidence and identifying the cause.</p><span class="card-code">CASE FILE: LOCKED</span></article>
+        <article class="game-card magenta"><span class="card-icon" aria-hidden="true">⎔</span><span class="soon">Coming soon</span><h3>Virus Outbreak</h3><p>Defend computer systems against spreading malware and cyber threats.</p><span class="card-code">THREAT LEVEL: UNKNOWN</span></article>
+        <article class="game-card purple"><span class="card-icon" aria-hidden="true">▦</span><span class="soon">Coming soon</span><h3>PC Builder Tycoon</h3><p>Build the right computer for each customer while balancing performance and budget.</p><span class="card-code">WORKSHOP: LOCKED</span></article>
+        <article class="game-card green"><span class="card-icon" aria-hidden="true">⌗</span><span class="soon">Coming soon</span><h3>Tech Escape Room</h3><p>Solve computer science puzzles to unlock the room and escape.</p><span class="card-code">EXIT: SEALED</span></article>
+        <article class="game-card blue"><span class="card-icon" aria-hidden="true">≫</span><span class="soon">Coming soon</span><h3>Code Racer</h3><p>Use programming logic and algorithms to navigate increasingly difficult courses.</p><span class="card-code">TRACK: LOCKED</span></article>
+      </div>
+    </section>
+
+    <section class="achievements" aria-labelledby="badges-title">
+      <div><p class="kicker">Achievement vault</p><h2 id="badges-title">Badges</h2><p>Master games and complete special challenges to add badges to your collection.</p></div>
+      <div class="badge-empty" data-badge-list><span aria-hidden="true">◇</span><p><strong>No badges earned yet.</strong><br>Your first achievement is waiting.</p></div>
+    </section>
+  </main>
+
+  <footer><span>Friday Arcade <b>v0.1</b></span><span>Built for curious minds and Friday energy.</span></footer>
+</body>
+</html>
