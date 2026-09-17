@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050b13">
+  <meta name="description" content="Tech Detective, a digital investigation game from Friday Arcade.">
+  <title>Tech Detective — Friday Arcade</title>
+  <link rel="stylesheet" href="css/tech-detective.css">
+  <script src="../../js/profile.js" defer></script>
+  <script src="js/cases.js" defer></script>
+  <script src="js/game.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#game-view">Skip to investigation</a>
+  <div class="scan-grid" aria-hidden="true"></div>
+  <main id="tech-detective" class="game-shell">
+    <header id="case-header" class="case-header" hidden>
+      <button class="wordmark compact" data-action="title" aria-label="Tech Detective title screen">
+        <span class="mark" aria-hidden="true"><i></i></span>
+        <span><small>Friday Arcade</small><strong>Tech Detective</strong></span>
+      </button>
+      <div class="case-identity"><small id="case-number">Active file</small><strong id="case-name">No active case</strong></div>
+      <div class="header-actions">
+        <button data-action="notebook" title="Notebook (N)"><kbd>N</kbd> Notebook</button>
+        <button data-action="board" title="Evidence Board (B)"><kbd>B</kbd> Evidence</button>
+        <button data-action="pause" title="Pause (Esc)"><kbd>Esc</kbd> Pause</button>
+      </div>
+    </header>
+
+    <section id="game-view" class="game-view" tabindex="-1" aria-live="polite"></section>
+  </main>
+
+  <div id="modal-root"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

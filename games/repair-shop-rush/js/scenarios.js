@@ -9,7 +9,7 @@
       deviceType: "Desktop PC",
       neutralActions: ["inspect"],
       relevantActions: [],
-      evidence: {},
+      evidence: {}, hints: ["Start with a visual inspection.", "Compare the symptom with the evidence you have.", "Test before spending money on a replacement."],
       servicePayout: 90,
       repairCost: 0
     }, config));
@@ -17,7 +17,8 @@
 
   const scenarios = [
     scenario({
-      id: "loose-display-cable", customerName: "Maya", complaint: "No picture on the monitor. It was working yesterday.", shortComplaint: "No picture on the monitor.",
+      id: "loose-display-cable", customerName: "Maya", complaint: "My monitor is dead. I pressed power three times, so naturally I suspect the graphics card exploded.", shortComplaint: "No picture on the monitor.",
+      hints: ["Start with the simple stuff: inspect the computer.", "The machine has power. What does the display test report?", "A NO SIGNAL message points toward the path between computer and monitor."],
       correctRepair: "connect-hdmi", requiredItem: "HDMI Cable", servicePayout: 90, repairCost: 8,
       relevantActions: ["inspect", "display-test", "hardware-check", "check-power", "connect-hdmi", "replace-monitor", "reseat-ram"],
       evidence: { inspect: "Computer fans and power light are on.", "check-power": "Monitor power light is on.", "display-test": "Monitor reports NO SIGNAL.", "hardware-check": "The display cable is loose at the computer." },
@@ -41,7 +42,7 @@
       explanation: "Working audio hardware plus a muted volume setting isolated the cause to software controls."
     }),
     scenario({
-      id: "adware-slowdown", customerName: "Dev", deviceType: "Laptop", complaint: "It is very slow, but it opens coupon ads instantly.", shortComplaint: "Very slow, with strange advertisements.",
+      id: "adware-slowdown", customerName: "Dev", deviceType: "Laptop", complaint: "It is very slow, but the popups load instantly. One says I won absolutely nothing.", shortComplaint: "Very slow, with strange advertisements.",
       correctRepair: "clean-adware", servicePayout: 100, repairCost: 10,
       relevantActions: ["inspect", "boot-test", "hardware-check", "software-check", "clean-adware", "clear-storage"],
       evidence: { inspect: "Fake offer windows keep appearing; hardware looks intact.", "boot-test": "Many unwanted programs launch during startup.", "hardware-check": "Processor, memory, and storage hardware pass.", "software-check": "Adware and unwanted browser extensions are detected." },
@@ -73,7 +74,7 @@
       explanation: "A healthy drive at 98% capacity showed that unnecessary files—not failed hardware—caused the slowdown."
     }),
     scenario({
-      id: "wifi-disabled", customerName: "Luis", deviceType: "Laptop", complaint: "My internet is broken.", shortComplaint: "Cannot connect to the internet.",
+      id: "wifi-disabled", customerName: "Luis", deviceType: "Laptop", complaint: "The Wi-Fi symbol disappeared. Did the internet company delete my internet?", shortComplaint: "Cannot connect to the internet.",
       correctRepair: "enable-wifi", servicePayout: 85,
       relevantActions: ["inspect", "software-check", "network-test", "enable-wifi", "restart-router"],
       evidence: { inspect: "The laptop shows no available wireless connection.", "software-check": "Wi-Fi is disabled on this computer.", "network-test": "The shop network works on another device." },
@@ -157,12 +158,12 @@
     })
   ];
 
-  const actionCosts = Object.freeze({ "display-test":5, "boot-test":5, "hardware-check":5, "software-check":5, "network-test":5, "connect-hdmi":8, "replace-ram":18, "clean-adware":10, "clear-storage":5, "replace-monitor":25 });
+  const actionCosts = Object.freeze({ "diagnostic-scan":5, "display-test":5, "boot-test":5, "hardware-check":5, "software-check":5, "network-test":5, "connect-hdmi":8, "replace-ram":18, "clean-adware":10, "clear-storage":5, "replace-monitor":25 });
 
   global.RepairScenarios = Object.freeze({
     all: Object.freeze(scenarios), advanced: Object.freeze(advanced), diagnosticActions: Object.freeze(diagnosticActions), repairActions: Object.freeze(repairActions), actionCosts,
     shuffled(limit, level) {
-      const copy = (level===3?advanced:scenarios).slice();
+      const copy = (level===3?advanced:level>=4?scenarios.concat(advanced):scenarios).slice();
       for (let i=copy.length-1;i>0;i-=1) { const j=Math.floor(Math.random()*(i+1)); [copy[i],copy[j]]=[copy[j],copy[i]]; }
       return copy.slice(0, limit || copy.length);
     }

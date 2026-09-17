@@ -101,6 +101,10 @@
       if (!gameId || !data || typeof data !== "object") return getProfile();
       return update(p => { p.gameStats[gameId] = Object.assign({}, p.gameStats[gameId] || {}, data); });
     },
+    clearGameStats(gameId) {
+      if (!gameId) return getProfile();
+      return update(p => { delete p.gameStats[gameId]; });
+    },
     getLevelProgress(xp) { return levelFromXP(xp); }
   };
 
